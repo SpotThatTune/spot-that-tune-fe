@@ -1,19 +1,27 @@
 @import url("https://use.typekit.net/ndn1fhm.css");
 
-body{
-    background: url('../../../public/assets/background.png');
-    background-repeat: no-repeat;
-    background-position: center;
+html{
+    background: url('../../../public/assets/background.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
     text-align: center;
     color: white;
 }
+
+#root{
+    height: 100%;
+}
 h1{
-    font-family: omnes-pro, sans-serif;font-weight: 500;
+    font-family: omnes-cond;
+    font-weight: 400;
     font-style: normal;
-    font-size: 4rem;
+    font-size: 5rem;
+    letter-spacing: 0.3em;
 }
 
 img{
-    height: 250px;
+    z-index: 4;
+    height: 150px;
     width: auto;
 }
