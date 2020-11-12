@@ -1,0 +1,19 @@
+@import url("https://use.typekit.net/ndn1fhm.css");
+
+body{
+    background: url('../../../public/assets/background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+h1{
+    font-family: omnes-pro, sans-serif;font-weight: 500;
+    font-style: normal;
+    font-size: 4rem;
+}
+
+img{
+    height: 250px;
+    width: auto;
+}
