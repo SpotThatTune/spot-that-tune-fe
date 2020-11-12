@@ -1,0 +1,13 @@
+.links{
+    display:flex;
+    align-items: flex-start;
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+}
+
+.instruction{
+    order:2;
+    align-self: flex-end;
+    right:0%;
+}
