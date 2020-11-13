@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
-
+const socketServer = process.env.SOCKET_SERVER;
 export default function App() {
   
-  const [socket, setSocket] = useState(socketIOClient('http://localhost:7890'));
+  const [socket, setSocket] = useState(socketIOClient(socketServer));
   const [songUrl, setSongUrl] = useState('');
   const [playing, setPlaying] = useState(false);
 
