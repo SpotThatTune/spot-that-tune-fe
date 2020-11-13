@@ -15,6 +15,7 @@ export default function App() {
         <Switch>
           <Route exact path="/socket" component={SocketComponent} />
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/socket" component={SocketComponent}/>
         </Switch>
       </Router>
     </>
