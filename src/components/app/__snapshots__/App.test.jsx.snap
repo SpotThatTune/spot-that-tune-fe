@@ -2,20 +2,6 @@
 
 exports[`App component renders App 1`] = `
 <DocumentFragment>
-
-  <div>
-    <input
-      name="songUrl"
-      value=""
-    />
-    <button>
-      Click me
-    </button>
-    <button>
-      &gt;
-    </button>
-  </div>
-
   <header>
     <h1>
       SPOT THAT TUNE
@@ -60,6 +46,5 @@ exports[`App component renders App 1`] = `
       INSTRUCTIONS
     </a>
   </div>
-
 </DocumentFragment>
 `;
