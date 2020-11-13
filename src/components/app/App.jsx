@@ -13,7 +13,7 @@ export default function App() {
     <>
       <Router>
         <Switch>
-          <Route exact path="/socket" component={SocketComponent}
+          <Route exact path="/socket" component={SocketComponent}/>
           <Route exact path="/" component={LandingPage} />
         </Switch>
       </Router>
