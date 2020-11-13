@@ -31,7 +31,7 @@ Ron Yonker
 
 # Domain Modeling
 
-![domain models](./domainmodels.PNG)
+
 
 # Database Entity-Relationship-Diagram
 ![models](./models.PNG)
