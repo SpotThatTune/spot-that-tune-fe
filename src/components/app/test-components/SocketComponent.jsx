@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
+const socketServer = process.env.SOCKET_SERVER;
 
 export default function App() {
   
-  const [socket, setSocket] = useState(socketIOClient('http://localhost:7890'));
+  const [socket, setSocket] = useState(socketIOClient(socketServer));
   // eslint-disable-next-line max-len
   const [songUrl, setSongUrl] = useState('https://p.scdn.co/mp3-preview/f399de2969ba2f0568fd1ec6aa8accdea1c311a9?cid=774b29d4f13844c495f206cafdad9c86');
+
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function App() {
       audioEl.play();
       setPlaying(true);
     });
-    
+ 
   }, [socket]);
   
   
@@ -35,7 +37,6 @@ export default function App() {
 
   const handlePlayPause = () => {
     socket.emit('playChange', playing);
-    
   };
   const handleChange = ({ target }) => {
     setSongUrl(target.value);
