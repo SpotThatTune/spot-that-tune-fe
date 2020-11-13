@@ -37,6 +37,7 @@ export default function App() {
 
   const handlePlayPause = () => {
     socket.emit('playChange', playing);
+    
   };
   const handleChange = ({ target }) => {
     setSongUrl(target.value);
