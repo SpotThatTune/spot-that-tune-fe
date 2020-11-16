@@ -35,13 +35,13 @@ exports[`App component renders App 1`] = `
   >
     <a
       class="about"
-      href=""
+      href="/about"
     >
       ABOUT US
     </a>
     <a
       class="instruction"
-      href=""
+      href="/instructions"
     >
       INSTRUCTIONS
     </a>

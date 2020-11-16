@@ -6,10 +6,14 @@ export const FooterNav = () => {
     
   return (
     <div className={styles.links}>
-      <Link className={styles.about} >
+      <Link 
+        className={styles.about} to="/about"
+      >
       ABOUT US
       </Link>
-      <Link className={styles.instruction}>
+      <Link 
+        className={styles.instruction}
+        to="/instructions">
       INSTRUCTIONS
       </Link>
              

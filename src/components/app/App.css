@@ -7,13 +7,13 @@ html{
     overflow: hidden;
     text-align: center;
     color: white;
+    font-family: omnes-cond;
 }
 
 #root{
     height: 100%;
 }
 h1{
-    font-family: omnes-cond;
     font-weight: 400;
     font-style: normal;
     font-size: 5rem;
