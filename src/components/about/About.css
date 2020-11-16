@@ -1,0 +1,28 @@
+
+ul{
+    list-style-type: none;
+    border: thick double white;
+}
+
+li{
+    margin: 10px;
+}
+
+.aboutTitle{
+    text-decoration: underline;
+}
+
+section{
+    display: flex;
+    justify-content: center;    
+}
+
+img{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+figcaption{
+    max-width: 410px;
+    margin-top: 10px;
+}

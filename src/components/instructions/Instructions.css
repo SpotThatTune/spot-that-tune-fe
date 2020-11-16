@@ -1,0 +1,12 @@
+ul{
+    list-style-type: none;
+    border: thick double white;
+}
+
+li{
+    margin: 10px;
+}
+
+.instructionTitle{
+    text-decoration: underline;
+}
