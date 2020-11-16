@@ -1,11 +1,12 @@
 import React from 'react';
 import FooterNav from '../footer/FooterNav';
+import styles from './About.css';
 
 const About = () => {
   return (
     <div>
-      <h1>About us</h1>
-      <section className="figure-caption">
+      <h1 className={styles.aboutTitle}>About us</h1>
+      <section>
         <figure>
           <img src="https://placekitten.com/g/300/400" alt="Ron"></img>
           <figcaption>Ron</figcaption>
