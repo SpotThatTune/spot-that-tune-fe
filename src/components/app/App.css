@@ -25,3 +25,32 @@ img{
     height: 150px;
     width: auto;
 }
+
+ul{
+    list-style-type: none;
+    border: thick double white;
+}
+
+li{
+    margin: 10px;
+}
+
+h1{
+    text-decoration: underline;
+}
+
+section{
+    display: flex;
+    justify-content: center;    
+    flex-basis: auto;
+}
+
+img{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+figcaption{
+    max-width: 410px;
+    margin-top: 10px;
+}
