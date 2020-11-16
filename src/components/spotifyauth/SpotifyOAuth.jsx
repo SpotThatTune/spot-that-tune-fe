@@ -6,7 +6,7 @@ export const SpotifyOAuth = () => {
   const clientId = process.env.CLIENT_ID;
   const redirectUri = process.env.REDIRECT_URI;
   const scopes = [
-    'streaming',
+    'playlist-read-private',
     'user-modify-playback-state',
     'user-read-currently-playing',
     'user-read-playback-state',
