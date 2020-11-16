@@ -8,6 +8,8 @@ const NewGame = () => {
   const userPlaylists = useSelector(state => state.userPlaylists);
   const token = useSelector(state => state.token);
   const dispatch = useDispatch();
+
+  const [currentPlaylist, setCurrentPlaylist] = useState('');
   
   useEffect(() => {
     if(!token) {
@@ -21,9 +23,23 @@ const NewGame = () => {
     
 
   }, []);
+  const handleChange = ({ target }) => {
+    setCurrentPlaylist(target.value);
+  };
+  const selectOptions = userPlaylists.map(playlist => (
+    <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
+  ));
   return (
+
     <div>
       New Game page
+      <select
+        onChange={handleChange}
+        name="userPlaylists"
+        value={currentPlaylist}
+      >
+        {selectOptions}
+      </select>
     </div>
   );
 };
