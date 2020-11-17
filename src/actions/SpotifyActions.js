@@ -1,4 +1,4 @@
-import { getUserPlaylists } from '../services/spotifyAPI';
+import { getPlaylistTracks, getUserPlaylists } from '../services/spotifyAPI';
 
 export const SET_TOKEN = 'SET_TOKEN';
 export const setToken = token => ({
@@ -12,7 +12,27 @@ export const setUserPlaylists = playlists => ({
   payload: playlists
 });
 
+export const SET_TRACKS = 'SET_TRACKS';
+export const setTracks = tracks => ({
+  type:SET_TRACKS,
+  payload: tracks
+});
+
+export const SET_CURRENT_TRACK = 'SET_CURRENT_TRACK';
+export const setCurrentTrack = track => ({
+  type:SET_CURRENT_TRACK,
+  payload: track
+});
+
+
 export const fetchUserPlaylists = token => dispatch => {
   getUserPlaylists(token)
     .then(playlists => dispatch(setUserPlaylists(playlists)));
 };
+
+export const fetchPlaylistTracks = (token, playlistId) => dispatch => {
+  getPlaylistTracks(token, playlistId)
+    .then(tracks => dispatch(setTracks(tracks)));
+};
+
+
