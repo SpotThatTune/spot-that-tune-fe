@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { fetchUserPlaylists, setToken } from '../../actions/SpotifyActions';
+import { fetchPlaylistTracks, fetchUserPlaylists, setToken } from '../../actions/SpotifyActions';
 
 
 const NewGame = () => {
   const userPlaylists = useSelector(state => state.userPlaylists);
   const token = useSelector(state => state.token);
+  const tracks = useSelector(state => state.tracks);
   const dispatch = useDispatch();
 
-  const [currentPlaylist, setCurrentPlaylist] = useState('');
+  const [currentPlaylist, setCurrentPlaylist] = useState(null);
   
   useEffect(() => {
     if(!token) {
@@ -24,22 +24,40 @@ const NewGame = () => {
 
   }, []);
   const handleChange = ({ target }) => {
-    setCurrentPlaylist(target.value);
+    setCurrentPlaylist({ 
+      id:target.value, 
+      name:target.name });
   };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(fetchPlaylistTracks(token, currentPlaylist.id));
+  };
+
   const selectOptions = userPlaylists.map(playlist => (
     <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
   ));
+
   return (
 
     <div>
       New Game page
-      <select
-        onChange={handleChange}
-        name="userPlaylists"
-        value={currentPlaylist}
-      >
-        {selectOptions}
-      </select>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <select
+            onChange={handleChange}
+            name="userPlaylists"
+            value={currentPlaylist}
+          >
+            {!currentPlaylist ? <option>Select Playlist</option> : ''}
+            {selectOptions}
+          </select>
+          <button disabled={!currentPlaylist}>Play</button>
+        </form>
+
+
+      </div>
+      
     </div>
   );
 };

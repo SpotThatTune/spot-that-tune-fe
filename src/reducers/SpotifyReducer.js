@@ -1,4 +1,8 @@
-import { SET_USER_PLAYLISTS, SET_TOKEN } from '../actions/SpotifyActions';
+import { 
+  SET_USER_PLAYLISTS, 
+  SET_TOKEN, 
+  SET_TRACKS
+} from '../actions/SpotifyActions';
 
 const initialState = {
   user:'',
@@ -6,7 +10,7 @@ const initialState = {
   currentSong:null,
   playlistId:'',
   userPlaylists:[],
-  songs:[],
+  tracks:[],
 };
 
 export default function reducer(state = initialState, action){
@@ -15,6 +19,8 @@ export default function reducer(state = initialState, action){
       return { ...state, token:action.payload };
     case SET_USER_PLAYLISTS:
       return { ...state, userPlaylists:action.payload };
+    case SET_TRACKS:
+      return { ...state, tracks:action.payload };
     default:
       return state;
   }

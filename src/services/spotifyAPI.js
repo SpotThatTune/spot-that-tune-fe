@@ -9,3 +9,14 @@ export const getUserPlaylists = token => {
     .then(res => res.json())
     .then(json => json.items.map(item => ({ id:item.id, name:item.name }))); 
 };
+
+export const getPlaylistTracks = (token, playlistId) => {
+  // eslint-disable-next-line max-len
+  return fetch(`${url}playlists/${playlistId}/tracks?market=US&fields=items(track(name%2Cartists%2Cpreview_url%2Calbum(name%2Cimages%2Crelease_date)))`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json());
+};
+
