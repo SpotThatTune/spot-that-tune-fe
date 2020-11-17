@@ -18,6 +18,12 @@ export const setTracks = tracks => ({
   payload: tracks
 });
 
+export const SET_CURRENT_TRACK = 'SET_CURRENT_TRACK';
+export const setCurrentTrack = track => ({
+  type:SET_CURRENT_TRACK,
+  payload: track
+});
+
 
 export const fetchUserPlaylists = token => dispatch => {
   getUserPlaylists(token)

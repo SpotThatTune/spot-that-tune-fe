@@ -17,6 +17,7 @@ export const getPlaylistTracks = (token, playlistId) => {
       Authorization: `Bearer ${token}`
     }
   })
-    .then(res => res.json());
+    .then(res => res.json())
+    .then(json => json.items);
 };
 

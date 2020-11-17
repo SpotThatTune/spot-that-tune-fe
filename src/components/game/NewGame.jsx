@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPlaylistTracks, fetchUserPlaylists, setToken } from '../../actions/SpotifyActions';
+import { 
+  fetchPlaylistTracks, 
+  fetchUserPlaylists, 
+  setToken,
+  setCurrentTrack
+} from '../../actions/SpotifyActions';
+import Game from './Game';
 
 
 const NewGame = () => {
   const userPlaylists = useSelector(state => state.userPlaylists);
   const token = useSelector(state => state.token);
   const tracks = useSelector(state => state.tracks);
+  const currentTrack = useSelector(state => state.currentTrack);
   const dispatch = useDispatch();
 
-  const [currentPlaylist, setCurrentPlaylist] = useState(null);
+  const [currentPlaylist, setCurrentPlaylist] = useState('');
   
   useEffect(() => {
     if(!token) {
@@ -24,14 +31,19 @@ const NewGame = () => {
 
   }, []);
   const handleChange = ({ target }) => {
-    setCurrentPlaylist({ 
-      id:target.value, 
-      name:target.name });
+    setCurrentPlaylist(target.value);
+    
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    dispatch(fetchPlaylistTracks(token, currentPlaylist.id));
+    console.log(currentPlaylist);
+    // dispatch(fetchPlaylistTracks(token, currentPlaylist));
+    // const randomTrack = Math.floor(Math.random() * tracks.length);
+    // const newTrack = tracks[randomTrack];
+    // dispatch(setCurrentTrack(newTrack));
+    // console.log(newTrack, randomTrack);
+    
   };
 
   const selectOptions = userPlaylists.map(playlist => (
@@ -54,9 +66,8 @@ const NewGame = () => {
           </select>
           <button disabled={!currentPlaylist}>Play</button>
         </form>
-
-
       </div>
+      <Game />
       
     </div>
   );
