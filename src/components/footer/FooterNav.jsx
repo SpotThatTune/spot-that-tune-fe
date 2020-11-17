@@ -3,23 +3,28 @@ import { Link } from 'react-router-dom';
 import styles from './FooterNav.css';
 
 export const FooterNav = () => {
-    
+
   return (
     <div className={styles.links}>
-      <Link 
+      <Link
         className={styles.about} to="/about"
       >
-      ABOUT US
+        ABOUT US
       </Link>
-      <Link 
+      <Link
+        className={styles.about} to="/"
+      >
+        HOME
+      </Link>
+      <Link
         className={styles.instruction}
         to="/instructions">
-      INSTRUCTIONS
+        INSTRUCTIONS
       </Link>
-             
+
     </div>
   );
-    
+
 };
 
 export default FooterNav;
