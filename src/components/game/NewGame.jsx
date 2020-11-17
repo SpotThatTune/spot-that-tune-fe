@@ -14,8 +14,10 @@ const NewGame = () => {
   const token = useSelector(state => state.token);
   const tracks = useSelector(state => state.tracks);
   const currentTrack = useSelector(state => state.currentTrack);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  
+  const [playlists, setPlaylists] = useState([]);
   const [currentPlaylist, setCurrentPlaylist] = useState('');
   
   useEffect(() => {
@@ -25,24 +27,24 @@ const NewGame = () => {
       const access_token = params[0].slice(params[0].indexOf('=') + 1);
       console.log(access_token);
       dispatch(setToken(access_token));
-      dispatch(fetchUserPlaylists(access_token));  
-    }
-    
-
+      dispatch(fetchUserPlaylists(access_token));
+    }  
   }, []);
+
+  useEffect(() => {
+    if(currentPlaylist) dispatch(fetchPlaylistTracks(token, currentPlaylist));
+  }, [currentPlaylist]);
+
   const handleChange = ({ target }) => {
     setCurrentPlaylist(target.value);
-    
   };
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    console.log(currentPlaylist);
-    // dispatch(fetchPlaylistTracks(token, currentPlaylist));
-    // const randomTrack = Math.floor(Math.random() * tracks.length);
-    // const newTrack = tracks[randomTrack];
-    // dispatch(setCurrentTrack(newTrack));
-    // console.log(newTrack, randomTrack);
+    const randomTrack = Math.floor(Math.random() * tracks.length);
+    const newTrack = tracks[randomTrack];
+    dispatch(setCurrentTrack(newTrack));
+    console.log(newTrack, randomTrack);
     
   };
 
