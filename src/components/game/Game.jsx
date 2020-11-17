@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from 'socket.io-client';
+import { setCurrentTrack } from '../../actions/SpotifyActions';
 const socketServer = process.env.SOCKET_SERVER;
 
 const Game = () => {
   const [socket, setSocket] = useState(socketIOClient(socketServer));
   const currentTrack = useSelector(state => state.currentTrack);
   const [playing, setPlaying] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if(!socket) return;
-    socket.on('songEvent', song => {
-      setSongUrl(song.newSong);
+    socket.on('changeTrack', song => {
+      dispatch(setCurrentTrack(song));
     });
     socket.on('pause', () => {
       const audioEl = document.getElementsByClassName('player')[0];
@@ -30,7 +32,7 @@ const Game = () => {
 
 
   const handleClick = () => {
-    socket.emit('setSongUrl', currentTrack);
+    socket.emit('changeTrack', currentTrack);
   };
 
   const handlePlayPause = () => {
@@ -51,7 +53,7 @@ const Game = () => {
         onClick={handlePlayPause}>{playing ? '||' : '>'}</button>
       <audio 
         className="player"
-        controls={true} 
+        controls={false} 
         src={currentTrack?.preview_url}></audio>
     </div>
   );

@@ -18,6 +18,6 @@ export const getPlaylistTracks = (token, playlistId) => {
     }
   })
     .then(res => res.json())
-    .then(json => json.items);
+    .then(json => json.items)
+    .then(tracks => tracks.map(track => ({ ...track.track })));
 };
-
