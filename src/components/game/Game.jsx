@@ -12,8 +12,8 @@ const Game = () => {
 
   useEffect(() => {
     if(!socket) return;
-    socket.on('changeTrack', song => {
-      dispatch(setCurrentTrack(song));
+    socket.on('changeTrack', track => {
+      dispatch(setCurrentTrack(track));
     });
     socket.on('pause', () => {
       const audioEl = document.getElementsByClassName('player')[0];
