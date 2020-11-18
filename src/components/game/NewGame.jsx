@@ -53,7 +53,7 @@ const NewGame = () => {
     event.preventDefault();
     const randomTrack = Math.floor(Math.random() * tracks.length);
     const newTrack = tracks[randomTrack];
-    dispatch(setCurrentTrack(newTrack));
+    dispatch(setCurrentTrack(newTrack.preview_url));
     console.log(newTrack, randomTrack);  
   };
 
@@ -67,6 +67,7 @@ const NewGame = () => {
 
     socket.on('GAME_INFO', ({ gameId, game }) => {
       console.log(game);
+
       dispatch(setGame(game));
       history.push(`/game/${gameId}`);});
   };
