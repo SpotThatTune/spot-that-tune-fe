@@ -1,4 +1,9 @@
 .links{
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    letter-spacing: 0.3em;
     display:flex;
     justify-content:space-around;
     position: fixed;
@@ -9,4 +14,19 @@
         color:white;
         text-decoration:none;
     }
+}
+
+.about{
+    transition: transform .2s;
+}
+.about:hover{
+    transform: scale(1.5);
+}
+
+.instruction{
+    transition: transform .2s;
+}
+
+.instruction:hover{
+    transform: scale(1.5);
 }

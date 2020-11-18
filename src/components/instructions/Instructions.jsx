@@ -5,7 +5,7 @@ import styles from './Instructions.css';
 const Instructions = () => {
   return (
     <div>
-      <h1 className={styles.instructionTitle}>How to play</h1>
+      <h1 className={styles.instructionTitle}>HOW TO PLAY</h1>
       <article>
         <ul>
           <li>A host will create a room, which will generate a room number other players use to join. Host selects number of rounds the game will run</li>
