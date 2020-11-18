@@ -6,13 +6,15 @@ import {
   fetchPlaylistTracks, 
   fetchUserPlaylists, 
   setToken,
-  setCurrentTrack
+  setCurrentTrack,
+  fetchUserName
 } from '../../actions/SpotifyActions';
 import Game from './Game';
 const socketServer = process.env.SOCKET_SERVER;
 
 
 const NewGame = () => {
+  const userName = useSelector(state => state.userName);
   const userPlaylists = useSelector(state => state.userPlaylists);
   const token = useSelector(state => state.token);
   const tracks = useSelector(state => state.tracks);
@@ -34,6 +36,7 @@ const NewGame = () => {
       console.log(access_token);
       dispatch(setToken(access_token));
       dispatch(fetchUserPlaylists(access_token));
+      dispatch(fetchUserName(access_token));
     }  
   }, []);
 
@@ -51,8 +54,7 @@ const NewGame = () => {
     const randomTrack = Math.floor(Math.random() * tracks.length);
     const newTrack = tracks[randomTrack];
     dispatch(setCurrentTrack(newTrack));
-    console.log(newTrack, randomTrack);
-    
+    console.log(newTrack, randomTrack);  
   };
 
   const selectOptions = userPlaylists.map(playlist => (
@@ -104,7 +106,7 @@ const NewGame = () => {
         >Join Game</button>
       </div>
       
-      <Game />
+     
       
     </div>
   );
