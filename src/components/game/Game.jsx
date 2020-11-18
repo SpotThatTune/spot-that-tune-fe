@@ -56,7 +56,7 @@ const Game = () => {
       <audio 
         className="player"
         controls={false} 
-        src={currentTrack}></audio>
+        src={currentTrack.preview_url}></audio>
     </div>
   );
 };
