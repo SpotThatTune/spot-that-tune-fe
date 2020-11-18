@@ -64,6 +64,7 @@ const NewGame = () => {
     socket.emit('CREATE', { 
       user
     });
+
     socket.on('GAME_INFO', ({ gameId, game }) => {
       console.log(game);
       dispatch(setGame(game));
@@ -75,6 +76,7 @@ const NewGame = () => {
       console.log(gameId);
       dispatch(setGame(game));
       history.push(`/game/${gameId}`);});
+
   };
 
   return (
@@ -109,9 +111,7 @@ const NewGame = () => {
         <button
           onClick={handleJoinGame}
         >Join Game</button>
-      </div>
-      
-     
+      </div>  
       
     </div>
   );

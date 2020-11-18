@@ -15,6 +15,7 @@ const initialState = {
   userPlaylists:[],
   tracks:[],
   game:{}
+
 };
 
 export default function reducer(state = initialState, action){
