@@ -12,11 +12,6 @@ export const FooterNav = () => {
         ABOUT US
       </Link>
       <Link
-        className={styles.about} to="/"
-      >
-        HOME
-      </Link>
-      <Link
         className={styles.instruction}
         to="/instructions">
         INSTRUCTIONS

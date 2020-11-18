@@ -1,5 +1,5 @@
 import React from 'react';
-import FooterNav from '../footer/FooterNav';
+import { Link } from 'react-router-dom';
 import styles from './Instructions.css';
 
 const Instructions = () => {
@@ -18,7 +18,9 @@ const Instructions = () => {
           <li>Whoever has the most points at the end of the final round wins!</li>
         </ul>
       </article>
-      <FooterNav />
+      <Link className={styles.links} to="/" >
+      Home
+      </Link>
     </div>
   );
 };
