@@ -17,12 +17,32 @@ section{
     justify-content: center;    
 }
 
-img{
-    margin-left: 50px;
-    margin-right: 50px;
-}
 
 figcaption{
     max-width: 410px;
     margin-top: 10px;
+}
+
+.links{
+    display:flex;
+    justify-content:space-around;
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    font-weight: 700;
+    a, a:visited{
+        color:white;
+        text-decoration:none;
+    }
+}
+
+.profiles{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    img{
+        height: auto;
+        width: 30px;
+        border-radius: 50%;
+    }
 }
