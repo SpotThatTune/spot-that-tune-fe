@@ -30,6 +30,11 @@ export const setCurrentTrack = track => ({
   payload: track
 });
 
+export const SET_GAME = 'SET_GAME';
+export const setGame = game => ({
+  type:SET_GAME,
+  payload: game
+});
 
 export const fetchUserPlaylists = token => dispatch => {
   getUserPlaylists(token)
