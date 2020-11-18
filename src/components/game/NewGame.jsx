@@ -7,7 +7,8 @@ import {
   fetchUserPlaylists, 
   setToken,
   setCurrentTrack,
-  fetchUserName
+  fetchUserName,
+  setGame
 } from '../../actions/SpotifyActions';
 
 const socketServer = process.env.SOCKET_SERVER;
@@ -52,7 +53,7 @@ const NewGame = () => {
     event.preventDefault();
     const randomTrack = Math.floor(Math.random() * tracks.length);
     const newTrack = tracks[randomTrack];
-    dispatch(setCurrentTrack(newTrack));
+    dispatch(setCurrentTrack(newTrack.preview_url));
     console.log(newTrack, randomTrack);  
   };
 
@@ -63,15 +64,18 @@ const NewGame = () => {
     socket.emit('CREATE', { 
       user
     });
-    socket.on('GAME', generatedGameId => {
-      console.log(generatedGameId);
-      history.push(`/game/${generatedGameId}`);});
+    socket.on('GAME_INFO', ({ gameId, game }) => {
+      console.log(game);
+      //put game into state.
+      dispatch(setGame(game));
+      history.push(`/game/${gameId}`);});
   };
   const handleJoinGame = () => {
     socket.emit('JOIN', { gameId, user });
-    socket.on('JOIN_SUCCESS', joinedGameId => {
-      console.log(joinedGameId);
-      history.push(`/game/${joinedGameId}`);});
+    socket.on('GAME_INFO', ({ gameId, game }) => {
+      console.log(gameId);
+      dispatch(setGame(game));
+      history.push(`/game/${gameId}`);});
   };
 
   return (

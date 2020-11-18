@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from 'socket.io-client';
-import { setCurrentTrack } from '../../actions/SpotifyActions';
+import { setCurrentTrack, setGame } from '../../actions/SpotifyActions';
 const socketServer = process.env.SOCKET_SERVER;
 
 const Game = () => {
@@ -25,7 +25,9 @@ const Game = () => {
       audioEl.play();
       setPlaying(true);
     });
- 
+    socket.on('GAME_INFO', ({ game }) => {
+      dispatch(setGame(game));
+    });
   }, [socket]);
   
   
@@ -54,7 +56,7 @@ const Game = () => {
       <audio 
         className="player"
         controls={false} 
-        src={currentTrack?.preview_url}></audio>
+        src={currentTrack}></audio>
     </div>
   );
 };
