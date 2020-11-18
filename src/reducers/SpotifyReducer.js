@@ -13,6 +13,7 @@ const initialState = {
   playlistId:'',
   userPlaylists:[],
   tracks:[],
+  currentGame:{}
 };
 
 export default function reducer(state = initialState, action){
