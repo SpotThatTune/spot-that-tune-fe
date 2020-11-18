@@ -1,6 +1,7 @@
 import { 
+  SET_TOKEN,
   SET_USER_PLAYLISTS, 
-  SET_TOKEN, 
+  SET_USER,
   SET_TRACKS,
   SET_CURRENT_TRACK
 } from '../actions/SpotifyActions';
@@ -18,6 +19,8 @@ export default function reducer(state = initialState, action){
   switch(action.type){
     case SET_TOKEN:
       return { ...state, token:action.payload };
+    case SET_USER:
+      return { ...state, user:action.payload };
     case SET_USER_PLAYLISTS:
       return { ...state, userPlaylists:action.payload };
     case SET_TRACKS:

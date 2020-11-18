@@ -21,3 +21,13 @@ export const getPlaylistTracks = (token, playlistId) => {
     .then(json => json.items)
     .then(tracks => tracks.map(track => ({ ...track.track })));
 };
+
+export const getUserName = (token) => {
+  return fetch(`${url}me/`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(json => json.display_name);
+};

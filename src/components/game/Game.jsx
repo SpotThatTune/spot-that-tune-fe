@@ -39,15 +39,15 @@ const Game = () => {
     socket.emit('playChange', playing);
     
   };
-  const handleChange = ({ target }) => {
-    setSongUrl(target.value);
-  };
+  // const handleChange = ({ target }) => {
+  //   setSongUrl(target.value);
+  // };
   return (
     <div>
-      <input 
+      {/* <input 
         name="currentTrackName"
         value={currentTrack?.name}
-        onChange={handleChange}/>
+        onChange={handleChange}/> */}
       <button onClick={handleClick}>Click me</button>
       <button
         onClick={handlePlayPause}>{playing ? '||' : '>'}</button>
