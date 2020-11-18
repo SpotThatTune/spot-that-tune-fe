@@ -7,6 +7,7 @@ const socketServer = process.env.SOCKET_SERVER;
 const Game = () => {
   const [socket, setSocket] = useState(socketIOClient(socketServer));
   const currentTrack = useSelector(state => state.currentTrack);
+  const tracks = useSelector(state => state.tracks);
   const [playing, setPlaying] = useState(false);
   const dispatch = useDispatch();
 
@@ -34,23 +35,22 @@ const Game = () => {
 
 
   const handleClick = () => {
-    socket.emit('changeTrack', currentTrack);
+    const randomTrack = Math.floor(Math.random() * tracks.length);
+    const newTrack = tracks[randomTrack];
+    dispatch(setCurrentTrack(newTrack));
+    console.log(newTrack, randomTrack);
+    socket.emit('changeTrack', newTrack);
   };
 
   const handlePlayPause = () => {
     socket.emit('playChange', playing);
     
   };
-  // const handleChange = ({ target }) => {
-  //   setSongUrl(target.value);
-  // };
+
   return (
     <div>
-      {/* <input 
-        name="currentTrackName"
-        value={currentTrack?.name}
-        onChange={handleChange}/> */}
-      <button onClick={handleClick}>Click me</button>
+      <div>{currentTrack.name}</div>
+      <button onClick={handleClick}>New Song</button>
       <button
         onClick={handlePlayPause}>{playing ? '||' : '>'}</button>
       <audio 

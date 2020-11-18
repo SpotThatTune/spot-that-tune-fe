@@ -67,7 +67,7 @@ const NewGame = () => {
 
     socket.on('GAME_INFO', ({ gameId, game }) => {
       console.log(game);
-      //put game into state.
+
       dispatch(setGame(game));
       history.push(`/game/${gameId}`);});
   };
