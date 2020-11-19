@@ -1,0 +1,89 @@
+@import url("https://use.typekit.net/ndn1fhm.css");
+ul{
+    list-style-type: none;
+}
+
+li{
+    margin: 10px;
+}
+
+.aboutTitle{
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+}
+
+section{
+    display: flex;
+    justify-content: center;    
+}
+
+
+figcaption{
+    max-width: 410px;
+    margin-top: 10px;
+}
+
+.links{
+    transition: transform .2s;
+    display:flex;
+    justify-content:space-around;
+    letter-spacing: 0.3em;
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    text-decoration:none;
+    a, a:visited{
+        color:white;
+    }
+}
+.links:hover{
+    transform: scale(1.5);
+}
+
+.profiles{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    img{
+        transition: transform .2s;
+        height: auto;
+        width: 30px;
+        border-radius: 50%;
+    }
+    img:hover{
+        transform: scale(1.5);
+    }
+}
+
+.jobtitle{
+    font-size: 1.25rem;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+.content{
+    font-size: 1rem;
+    font-family: omnes-pro, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+
+.name{
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.profilepic{
+    border-radius: 50%;
+}

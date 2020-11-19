@@ -1,0 +1,42 @@
+ul{
+    list-style-type: none;
+
+}
+
+li{
+    margin: 10px;
+    font-size: 1.3rem;
+    font-family: omnes-pro, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+
+.instructionTitle{
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+}
+
+.links{
+    transition: transform .2s;
+    display:flex;
+    letter-spacing: 0.3em;
+    justify-content:space-around;
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    text-decoration:none;
+    a, a:visited{
+        color:white;
+    }
+}
+
+.links:hover{
+    transform: scale(1.5);
+}
