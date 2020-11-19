@@ -8,27 +8,28 @@ import {
   setToken,
   setCurrentTrack,
   fetchUserName,
-  setGame
+  setGame,
+  setSocket
 } from '../../actions/SpotifyActions';
 
 const socketServer = process.env.SOCKET_SERVER;
 
 
 const NewGame = () => {
-  
+  const socket = useSelector(state => state.socket);
   const user = useSelector(state => state.user);
   const userPlaylists = useSelector(state => state.userPlaylists);
   const token = useSelector(state => state.token);
   const tracks = useSelector(state => state.tracks);
   const currentTrack = useSelector(state => state.currentTrack);
-  const [socket, setSocket] = useState(socketIOClient(socketServer));
+  // const [socket, setSocket] = useState(socketIOClient(socketServer));
   const [gameId, setGameId] = useState('');
   const [currentPlaylist, setCurrentPlaylist] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-
+    if(!socket) dispatch(setSocket(socketIOClient(socketServer)));
     if(!token) {
       const hash = window.location.hash;
       const params = hash.split('&');
@@ -49,13 +50,13 @@ const NewGame = () => {
     if(target.name === 'gameId')setGameId(target.value);
   };
 
-  const handleSubmit = async(event) => {
-    event.preventDefault();
-    const randomTrack = Math.floor(Math.random() * tracks.length);
-    const newTrack = tracks[randomTrack];
-    dispatch(setCurrentTrack(newTrack.preview_url));
-    console.log(newTrack, randomTrack);  
-  };
+  // const handleSubmit = async(event) => {
+  //   event.preventDefault();
+  //   const randomTrack = Math.floor(Math.random() * tracks.length);
+  //   const newTrack = tracks[randomTrack];
+  //   dispatch(setCurrentTrack(newTrack.preview_url));
+  //   console.log(newTrack, randomTrack);  
+  // };
 
   const selectOptions = userPlaylists.map(playlist => (
     <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
@@ -85,18 +86,14 @@ const NewGame = () => {
     <div>
       <h1>Welcome {user}</h1>
       <div>
-        <form onSubmit={handleSubmit}>
-          
-          <select
-            onChange={handleChange}
-            name="userPlaylists"
-            value={currentPlaylist}
-          >
-            {!currentPlaylist ? <option>Select Playlist</option> : ''}
-            {selectOptions}
-          </select>
-          <button disabled={!currentPlaylist}>Play</button>
-        </form>
+        <select
+          onChange={handleChange}
+          name="userPlaylists"
+          value={currentPlaylist}
+        >
+          {!currentPlaylist ? <option>Select Playlist</option> : ''}
+          {selectOptions}
+        </select>
       </div>
       <div>
         <button
