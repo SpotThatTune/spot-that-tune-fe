@@ -5,7 +5,8 @@ import {
   SET_TRACKS,
   SET_CURRENT_TRACK,
   SET_GAME,
-  SET_SOCKET
+  SET_SOCKET,
+  SET_PLAYING
 } from '../actions/SpotifyActions';
 
 const initialState = {
@@ -16,8 +17,8 @@ const initialState = {
   userPlaylists:[],
   tracks:[],
   game:{},
-  socket: null
-
+  socket: null,
+  playing:false
 };
 
 export default function reducer(state = initialState, action){
@@ -36,6 +37,8 @@ export default function reducer(state = initialState, action){
       return { ...state, game:action.payload };
     case SET_SOCKET:
       return { ...state, socket:action.payload };
+    case SET_PLAYING:
+      return { ...state, playing:action.payload };
     default:
       return state;
   }
