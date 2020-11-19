@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setCurrentTrack,
@@ -7,19 +7,28 @@ import {
 } from '../../actions/SpotifyActions';
 
 const Player = () => {
-  const socket = useSelector(state => state.socket);
+  const [userGuess, setUserGuess] = useState('');
+  const { 
+    socket, 
+    currentTrack, 
+    user, 
+    game 
+  } = useSelector(state => state);
+ 
+  
   const dispatch = useDispatch();
   useEffect(() => {
     if(!socket) return;
-    socket.on('changeTrack', track => {
+    socket.on('CHANGE_TRACK', track => {
       dispatch(setCurrentTrack(track));
     });
-    socket.on('pause', () => {
+    socket.on('PAUSE', () => {
       const audioEl = document.getElementById('player');
       audioEl.pause();
       dispatch(setPlaying(false));
+      console.log('Hit');
     });
-    socket.on('play', () => {
+    socket.on('PLAY', () => {
       const audioEl = document.getElementById('player');
       audioEl.play();
       dispatch(setPlaying(true));
@@ -29,16 +38,32 @@ const Player = () => {
     });
   }, [socket]);
     
-    
-
+  const handleGuess = event => {
+    event.preventDefault();
+    console.log(`${user} guessed ${userGuess}`);
+    socket.emit('GUESS', { userGuess, user, gameId:game.id });
+  };
+  const handleChange = ({ target }) => {
+    setUserGuess(target.value);
+  };
   return (
     <div>
       Player page
       <audio
         id="player" 
         className="player"
-        controls={false} 
+        controls={true} 
         src={currentTrack.preview_url}></audio>
+
+      <form onSubmit={handleGuess}>
+        <input
+          type="text"
+          name="guess"
+          value={userGuess}
+          placeholder="Guess the Song"
+          onChange={handleChange}/>
+        <button>Make your guess</button>
+      </form>
     </div>
   );
 };
