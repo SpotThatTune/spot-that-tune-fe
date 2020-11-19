@@ -5,9 +5,11 @@ import { setCurrentTrack, setGame } from '../../actions/SpotifyActions';
 const socketServer = process.env.SOCKET_SERVER;
 
 const Game = () => {
-  const [socket, setSocket] = useState(socketIOClient(socketServer));
+  // const [socket, setSocket] = useState(socketIOClient(socketServer));
+  const socket = useSelector(state => state.socket);
   const currentTrack = useSelector(state => state.currentTrack);
   const tracks = useSelector(state => state.tracks);
+  const game = useSelector(state => state.game);
   const [playing, setPlaying] = useState(false);
   const dispatch = useDispatch();
 
@@ -39,7 +41,7 @@ const Game = () => {
     const newTrack = tracks[randomTrack];
     dispatch(setCurrentTrack(newTrack));
     console.log(newTrack, randomTrack);
-    socket.emit('changeTrack', newTrack);
+    socket.emit('changeTrack', newTrack, game.id);
   };
 
   const handlePlayPause = () => {
@@ -49,7 +51,7 @@ const Game = () => {
 
   return (
     <div>
-      <div>{currentTrack.name}</div>
+      <div>{currentTrack.name ? currentTrack.name : 'Select a song' }</div>
       <button onClick={handleClick}>New Song</button>
       <button
         onClick={handlePlayPause}>{playing ? '||' : '>'}</button>
