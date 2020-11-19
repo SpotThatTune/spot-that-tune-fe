@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
+import styles from './NewGame.css';
 import { 
   fetchPlaylistTracks, 
   fetchUserPlaylists, 
@@ -52,7 +53,10 @@ const NewGame = () => {
   };
 
   const selectOptions = userPlaylists.map(playlist => (
-    <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
+    <option 
+      className={styles.options} 
+      key={playlist.id} 
+      value={playlist.id}>{playlist.name}</option>
   ));
   const handleCreateGame = () => {
     socket.emit('CREATE', { 
@@ -76,34 +80,44 @@ const NewGame = () => {
 
   return (
 
-    <div>
-      <h1>Welcome {user}</h1>
-      <div>
-        <select
-          onChange={handleChange}
-          name="userPlaylists"
-          value={currentPlaylist}
-        >
-          {!currentPlaylist ? <option>Select Playlist</option> : ''}
-          {selectOptions}
-        </select>
-      </div>
-      <div>
-        <button
-          onClick={handleCreateGame}
-        >Create Game</button>
-      </div>
-      <div>
-        <input
-          name="gameId"
-          value={gameId}
-          onChange={handleChange}>
-        </input>
-        <button
-          onClick={handleJoinGame}
-        >Join Game</button>
-      </div>  
+    <div className={styles.content}>
+      <h1>SPOT THAT TUNE</h1>
+      <h2>Welcome {user}</h2>
+      <div className={styles.main}>
+        <div className={styles.selectPlaylist}>
+          <h2>Choose Your Playlist:</h2>
+          <select
+            onChange={handleChange}
+            name="userPlaylists"
+            value={currentPlaylist}
+          >
+            {!currentPlaylist ? <option>{user}'s PLAYLISTS</option> : ''}
+            {selectOptions}
+          </select>
+          
+        </div>
+        <div>
+          <button
+            onClick={handleCreateGame}>
+          CREATE NEW GAME
+          </button>
+        </div>
+        <h2>
+          OR
+        </h2>
+        <div className={styles.joinGame}>
+          <input
+            name="gameId"
+            value={gameId}
+            onChange={handleChange}
+            placeholder="GAME ID">
+          </input>
+          <button
+            onClick={handleJoinGame}
+          >Join Game</button>
+        </div>  
       
+      </div>
     </div>
   );
 };
