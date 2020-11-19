@@ -26,7 +26,6 @@ const Player = () => {
       const audioEl = document.getElementById('player');
       audioEl.pause();
       dispatch(setPlaying(false));
-      console.log('Hit');
     });
     socket.on('PLAY', () => {
       const audioEl = document.getElementById('player');
@@ -41,7 +40,11 @@ const Player = () => {
   const handleGuess = event => {
     event.preventDefault();
     console.log(`${user} guessed ${userGuess}`);
-    socket.emit('GUESS', { userGuess, user, gameId:game.id });
+    socket.emit('GUESS', { 
+      userGuess,
+      user,
+      gameId:game.id,
+      playerId:socket.id});
   };
   const handleChange = ({ target }) => {
     setUserGuess(target.value);
