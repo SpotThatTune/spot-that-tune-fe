@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import socketIOClient from 'socket.io-client';
-import { setCurrentTrack, setGame } from '../../actions/SpotifyActions';
+
+import {
+  setCurrentTrack,
+  setGame,
+  setPlaying
+} from '../../actions/SpotifyActions';
 const socketServer = process.env.SOCKET_SERVER;
 
 const Game = () => {
-  // const [socket, setSocket] = useState(socketIOClient(socketServer));
+
   const socket = useSelector(state => state.socket);
   const currentTrack = useSelector(state => state.currentTrack);
   const tracks = useSelector(state => state.tracks);
   const game = useSelector(state => state.game);
-  const [playing, setPlaying] = useState(false);
+  const playing = useSelector(state => state.playing);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,12 +25,12 @@ const Game = () => {
     socket.on('pause', () => {
       const audioEl = document.getElementsByClassName('player')[0];
       audioEl.pause();
-      setPlaying(false);
+      dispatch(setPlaying(false));
     });
     socket.on('play', () => {
       const audioEl = document.getElementsByClassName('player')[0];
       audioEl.play();
-      setPlaying(true);
+      dispatch(setPlaying(true));
     });
     socket.on('GAME_INFO', ({ game }) => {
       dispatch(setGame(game));
@@ -40,13 +44,11 @@ const Game = () => {
     const randomTrack = Math.floor(Math.random() * tracks.length);
     const newTrack = tracks[randomTrack];
     dispatch(setCurrentTrack(newTrack));
-    console.log(newTrack, randomTrack);
     socket.emit('changeTrack', newTrack, game.id);
   };
 
   const handlePlayPause = () => {
-    socket.emit('playChange', playing);
-    
+    socket.emit('playChange', playing, game.id);  
   };
 
   return (

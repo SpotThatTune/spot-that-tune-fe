@@ -36,10 +36,16 @@ export const setGame = game => ({
   payload: game
 });
 
-export const  SET_SOCKET = ' SET_SOCKET';
+export const  SET_SOCKET = 'SET_SOCKET';
 export const setSocket = socket => ({
   type:SET_SOCKET,
   payload: socket
+});
+
+export const SET_PLAYING = 'SET_PLAYING';
+export const setPlaying = playing => ({
+  type:SET_PLAYING,
+  payload: playing
 });
 
 export const fetchUserPlaylists = token => dispatch => {
