@@ -1,0 +1,78 @@
+@import url("https://use.typekit.net/ndn1fhm.css");
+.content{
+    justify-content: center;
+}
+h1{
+    letter-spacing: 0.3em;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    }
+h2{
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    }
+.main{
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    display: grid;
+    text-align: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    h2{
+        font-size: 2rem;
+    }   
+    button{
+        background: none;
+        font-family: bebas-neue, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: whitesmoke;
+        border: none;
+        font-size: 2rem;
+    }
+}
+
+.selectPlaylist{
+    display:grid;
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    select{
+        width: auto;
+        text-align: center;
+        background: none;
+        font-size: 2rem;
+        border:none;
+        color: whitesmoke;
+        
+      
+      
+    }
+    
+}
+.options {
+    background:url('../../../public/assets/background.png') no-repeat center;
+    color:black
+}
+
+.joinGame{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-evenly;
+    input{
+        background: none;
+        font-family: bebas-neue, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: whitesmoke;
+        font-size: 2rem;
+       
+    }
+}
