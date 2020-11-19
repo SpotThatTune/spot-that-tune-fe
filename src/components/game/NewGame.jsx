@@ -16,13 +16,14 @@ const socketServer = process.env.SOCKET_SERVER;
 
 
 const NewGame = () => {
-  const socket = useSelector(state => state.socket);
-  const user = useSelector(state => state.user);
-  const userPlaylists = useSelector(state => state.userPlaylists);
-  const token = useSelector(state => state.token);
-  const tracks = useSelector(state => state.tracks);
-  const currentTrack = useSelector(state => state.currentTrack);
-  // const [socket, setSocket] = useState(socketIOClient(socketServer));
+  const {
+    socket, 
+    user, 
+    userPlaylists, 
+    token
+  } = useSelector(state => state);
+ 
+  
   const [gameId, setGameId] = useState('');
   const [currentPlaylist, setCurrentPlaylist] = useState('');
   const dispatch = useDispatch();
@@ -49,14 +50,6 @@ const NewGame = () => {
     if(target.name === 'userPlaylists')setCurrentPlaylist(target.value);
     if(target.name === 'gameId')setGameId(target.value);
   };
-
-  // const handleSubmit = async(event) => {
-  //   event.preventDefault();
-  //   const randomTrack = Math.floor(Math.random() * tracks.length);
-  //   const newTrack = tracks[randomTrack];
-  //   dispatch(setCurrentTrack(newTrack.preview_url));
-  //   console.log(newTrack, randomTrack);  
-  // };
 
   const selectOptions = userPlaylists.map(playlist => (
     <option key={playlist.id} value={playlist.id}>{playlist.name}</option>
