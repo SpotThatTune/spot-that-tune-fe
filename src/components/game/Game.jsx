@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { Host } from './Host';
 import Player from './Player';
+import ScoreBoard from './ScoreBoard';
 
 const Game = () => {
   const {
@@ -21,6 +22,7 @@ const Game = () => {
       <div>
         {isHost ? <Host /> : <Player />}
       </div>
+      <ScoreBoard />
     </div>
   );
 };

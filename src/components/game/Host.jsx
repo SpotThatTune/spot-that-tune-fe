@@ -47,11 +47,9 @@ export const Host = () => {
     const newTrack = tracks[randomTrack];
     dispatch(setCurrentTrack(newTrack));
     socket.emit('CHANGE_TRACK', newTrack, game.id);
+    socket.emit('PLAY_CHANGE', playing, game.id); 
   };
-    
-  const handlePlayPause = () => {
-    socket.emit('PLAY_CHANGE', playing, game.id);  
-  };
+
 
   const handleCorrect = () => {
     socket.emit('CORRECT', { playerId:player.id,
@@ -64,10 +62,8 @@ export const Host = () => {
     
   return (
     <div>
-      <h3>{currentTrack.name ? currentTrack.name : 'Select a track'}</h3>
-      <button onClick={handleClick}>New Song</button>
-      <button
-        onClick={handlePlayPause}>{playing ? '||' : '>'}</button> 
+      <h3>{currentTrack.name ? currentTrack.name : 'Press Play to start'}</h3>
+      <button onClick={handleClick}>Play</button>
       <audio 
         id="player"
         className="player"
