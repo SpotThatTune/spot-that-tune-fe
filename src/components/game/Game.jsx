@@ -1,6 +1,7 @@
 import React, { useEffect  } from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../header/Header';
+import styles from './Game.css';
 
 
 import { Host } from './Host';
@@ -17,14 +18,15 @@ const Game = () => {
   const isHost = (game.host.id === socket.id);
 
   return (
-    <div>
+    <div className={styles.content}>
       <Header/>
+      
       <h2>Game Room: {game.id}</h2>
-      <h3>Hello {user}</h3>
       <div>
         {isHost ? <Host /> : <Player />}
       </div>
       <ScoreBoard />
+      <h2 className={styles.username}>HELLO {user}</h2>
     </div>
   );
 };
