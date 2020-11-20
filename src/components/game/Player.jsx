@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './Player.css';
+
 import {
   setCurrentTrack,
   setGame,
@@ -57,23 +59,28 @@ const Player = () => {
     setUserGuess(target.value);
   };
   return (
-    <div>
+    <div className={styles.guess}>
       <h3>{correct ? currentTrack.name : ''}</h3>
       <audio
         id="player" 
         className="player"
         controls={false} 
         src={currentTrack.preview_url}></audio>
-
-      <form onSubmit={handleGuess}>
-        <input
-          type="text"
-          name="guess"
-          value={userGuess}
-          placeholder="Guess the Song"
-          onChange={handleChange}/>
-        <button>Make your guess</button>
-      </form>
+      <div>
+        <form  onSubmit={handleGuess}>
+          <input
+            type="text"
+            name="guess"
+            value={userGuess}
+            placeholder="Guess the Song"
+            onChange={handleChange}/>
+          <button 
+            className={styles.button}>Make your guess
+            <div className={styles.button__horizontal}></div>
+            <div className={styles.button__vertical}></div>
+          </button>
+        </form></div>
+      
     </div>
   );
 };

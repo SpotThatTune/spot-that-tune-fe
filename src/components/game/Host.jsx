@@ -5,6 +5,7 @@ import {
   setGame,
   setPlaying
 } from '../../actions/SpotifyActions';
+import styles from './Host.css';
 
 export const Host = () => {
   const {
@@ -70,22 +71,42 @@ export const Host = () => {
   return (
     <div>
       <h3>{currentTrack.name ? currentTrack.name : 'Click new song to start'}</h3>
-      <button onClick={handleClick}>New Song</button>
-      <button onClick={handlePlay}>Play</button>
+      <button 
+        className={styles.button}
+        onClick={handleClick}>New Song
+        <div className={styles.button__horizontal}></div>
+        <div className={styles.button__vertical}></div>
+      </button>
+      <button 
+        className={styles.button}
+        onClick={handlePlay}>
+          Play
+        <div className={styles.button__horizontal}></div>
+        <div className={styles.button__vertical}></div>
+      </button>
       <audio 
         id="player"
         className="player"
         controls={false} 
         src={currentTrack.preview_url}></audio>
-      <h3>{player.name} guessed {guess}</h3>
+      
       <button
+        className={styles.button}
         name="correct"
         onClick={handleCorrect}
-      >Correct</button>
+      >Correct
+        <div className={styles.button__horizontal}></div>
+        <div className={styles.button__vertical}></div>
+      </button>
       <button
+        className={styles.button}
         name="inCorrect"
         onClick={handleIncorrect}
-      >Incorrect</button>
+      >Incorrect
+        <div className={styles.button__horizontal}></div>
+        <div className={styles.button__vertical}></div>
+      </button>
+      <h3>{guess ? `${player.name} guesses ${guess}` : '' }</h3>
     </div>
   );
 };

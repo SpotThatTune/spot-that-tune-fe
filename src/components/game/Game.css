@@ -1,0 +1,11 @@
+.content{
+    min-height: 100vh;
+    h2{    
+    }
+}
+.username{
+    position: fixed;
+    bottom: 2%;
+    right: 39.5%
+
+}
