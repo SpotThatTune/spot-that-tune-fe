@@ -22,7 +22,8 @@ const NewGame = () => {
     socket, 
     user, 
     userPlaylists, 
-    token
+    token,
+    tracks
   } = useSelector(state => state);
  
   
@@ -104,7 +105,7 @@ const NewGame = () => {
           <div>
             <button
               className={styles.button}
-              disabled={!currentPlaylist}
+              disabled={tracks.length === 0}
               onClick={handleCreateGame}>
           CREATE NEW GAME
               <div className={styles.button__horizontal}></div>
@@ -124,7 +125,7 @@ const NewGame = () => {
             <button 
               className={styles.button}
               onClick={handleJoinGame}
-              disabled={!currentPlaylist}
+              disabled={tracks.length === 0}
             >Join Game
               <div className={styles.button__horizontal}></div>
               <div className={styles.button__vertical}></div>
