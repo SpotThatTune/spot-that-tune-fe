@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    justify-content: center;
+    
+    img{
+        position: absolute;
+        top:1%;
+        left: 2%;
+    }
+    .h1{
+        
+    }
+}

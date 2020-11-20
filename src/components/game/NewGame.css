@@ -10,6 +10,7 @@ h1{
     color: whitesmoke;
     }
 h2{
+    padding:auto ;
     font-size: 2rem;
     letter-spacing: 0.3em;
     font-family: bebas-neue, sans-serif;
@@ -24,19 +25,11 @@ h2{
     color: whitesmoke;
     display: grid;
     text-align: center;
-    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr .5fr 1fr 1fr; 
     h2{
         font-size: 2rem;
     }   
-    button{
-        background: none;
-        font-family: bebas-neue, sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        color: whitesmoke;
-        border: none;
-        font-size: 2rem;
-    }
+    
 }
 
 .selectPlaylist{
@@ -44,27 +37,26 @@ h2{
     width: 90%;
     grid-template-columns: 1fr 1fr;
     justify-self: center;
+    padding-bottom: 10px;
     select{
-        width: auto;
+        width: 360px;
         text-align: center;
         background: none;
         font-size: 2rem;
+        margin: auto;
         border:none;
-        color: whitesmoke;
-        
-      
-      
+        color: whitesmoke;      
     }
     
 }
 .options {
-    background:url('../../../public/assets/background.png') no-repeat center;
+    background-color: cornsilk;
     color:black
 }
 
 .joinGame{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-content: space-evenly;
     input{
         background: none;
@@ -75,4 +67,90 @@ h2{
         font-size: 2rem;
        
     }
+}
+
+.button{
+    padding-top: 5px;
+    font-family: bebas-neue, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    background: none;
+    transition: transform .15s;
+    letter-spacing: 0.15em;
+}
+.button {
+	
+	--offset: 10px;
+	--border-size: 1px;
+	
+	position: relative;
+	padding: .5em 1em;
+	appearance: none;
+	border: 0;
+	background: transparent;
+	color:whitesmoke;
+	text-transform: uppercase;
+	letter-spacing: .25em;
+	outline: none;
+	cursor: pointer;
+	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+	transition: .8s ease;
+	
+	&:hover {
+		background: rgba(100, 0, 0, .03);
+	}
+	
+	&__horizontal,
+	&__vertical {
+		position: absolute;
+		top: var(--horizontal-offset, 0);
+		right: var(--vertical-offset, 0);
+		bottom: var(--horizontal-offset, 0);
+		left: var(--vertical-offset, 0);
+		transition: transform .8s ease;
+		will-change: transform;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			border: inherit;
+		}
+	}
+	
+	&__horizontal {
+		--vertical-offset: calc(var(--offset) * -1);
+		border-top: var(--border-size) solid currentcolor;
+		border-bottom: var(--border-size) solid currentcolor;
+		
+		&::before {
+			top: calc(var(--vertical-offset) - var(--border-size));
+			bottom: calc(var(--vertical-offset) - var(--border-size));
+			left: calc(var(--vertical-offset) * -1);
+			right: calc(var(--vertical-offset) * -1);
+		}
+	}
+	
+	&:hover &__horizontal {
+		transform: scaleX(0);
+	}
+	
+	&__vertical {
+		--horizontal-offset: calc(var(--offset) * -1);
+		border-left: var(--border-size) solid currentcolor;
+		border-right: var(--border-size) solid currentcolor;
+		
+		&::before {
+			top: calc(var(--horizontal-offset) * -1);
+			bottom: calc(var(--horizontal-offset) * -1);
+			left: calc(var(--horizontal-offset) - var(--border-size));
+			right: calc(var(--horizontal-offset) - var(--border-size));
+		}
+	}
+	
+	&:hover &__vertical {
+		transform: scaleY(0);
+	}
+	
 }
