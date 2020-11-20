@@ -100,6 +100,7 @@ const NewGame = () => {
           <div>
             <button
               className={styles.button}
+              disabled={!currentPlaylist}
               onClick={handleCreateGame}>
           CREATE NEW GAME
               <div className={styles.button__horizontal}></div>
@@ -119,6 +120,7 @@ const NewGame = () => {
             <button 
               className={styles.button}
               onClick={handleJoinGame}
+              disabled={!currentPlaylist}
             >Join Game
               <div className={styles.button__horizontal}></div>
               <div className={styles.button__vertical}></div>
