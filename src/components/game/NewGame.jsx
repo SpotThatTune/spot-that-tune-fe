@@ -76,9 +76,9 @@ const NewGame = () => {
       console.log(gameId);
       dispatch(setGame(game));
       history.push(`/game/${gameId}`);});
-    socket.on('JOIN_FAIL', () => {
-      console.log('fail');
-      alert('Game does not exist, please try again');
+    socket.on('JOIN_FAIL', ({ error }) => {
+      console.log(error);
+    
     });
 
   };
