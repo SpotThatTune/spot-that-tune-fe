@@ -27,7 +27,6 @@ export const Host = () => {
       const audioEl = document.getElementById('player');
       audioEl.pause();
       dispatch(setPlaying(false));
-      console.log('Hit');
     });
     socket.on('PLAY', () => {
       const audioEl = document.getElementById('player');

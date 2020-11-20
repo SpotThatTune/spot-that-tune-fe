@@ -14,7 +14,8 @@ const Player = () => {
   const { 
     socket, 
     currentTrack, 
-    user, 
+    user,
+    playing, 
     game 
   } = useSelector(state => state);
  
@@ -75,7 +76,8 @@ const Player = () => {
             placeholder="Guess the Song"
             onChange={handleChange}/>
           <button 
-            className={styles.button}>Make your guess
+            className={styles.button}
+            disabled={!playing}>Make your guess
             <div className={styles.button__horizontal}></div>
             <div className={styles.button__vertical}></div>
           </button>
