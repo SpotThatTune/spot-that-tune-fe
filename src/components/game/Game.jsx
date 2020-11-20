@@ -1,5 +1,6 @@
 import React, { useEffect  } from 'react';
 import { useSelector } from 'react-redux';
+import Header from '../header/Header';
 
 
 import { Host } from './Host';
@@ -16,6 +17,7 @@ const Game = () => {
 
   return (
     <div>
+      <Header/>
       <h2>Game Room: {game.id}</h2>
       <h3>Hello {user}</h3>
       <div>
