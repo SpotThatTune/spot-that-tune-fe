@@ -76,6 +76,10 @@ const NewGame = () => {
       console.log(gameId);
       dispatch(setGame(game));
       history.push(`/game/${gameId}`);});
+    socket.on('JOIN_FAIL', ({ error }) => {
+      console.log(error);
+    
+    });
 
   };
 
