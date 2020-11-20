@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
+import Header from '../header/Header';
 import styles from './NewGame.css';
 import { 
   fetchPlaylistTracks, 
@@ -79,46 +80,54 @@ const NewGame = () => {
   };
 
   return (
-
-    <div className={styles.content}>
-      <h1>SPOT THAT TUNE</h1>
-      <h2>Welcome {user}</h2>
-      <div className={styles.main}>
-        <div className={styles.selectPlaylist}>
-          <h2>Choose Your Playlist:</h2>
-          <select
-            onChange={handleChange}
-            name="userPlaylists"
-            value={currentPlaylist}
-          >
-            {!currentPlaylist ? <option>{user}'s PLAYLISTS</option> : ''}
-            {selectOptions}
-          </select>
+    <>
+      <Header />
+      <div className={styles.content}>
+        <h2>Welcome {user}</h2>
+        <div className={styles.main}>
+          <div className={styles.selectPlaylist}>
+            <h2>Choose Your Playlist:</h2>
+            <select
+              onChange={handleChange}
+              name="userPlaylists"
+              value={currentPlaylist}
+            >
+              {!currentPlaylist ? <option>{user}'s PLAYLISTS</option> : ''}
+              {selectOptions}
+            </select>
           
-        </div>
-        <div>
-          <button
-            onClick={handleCreateGame}>
+          </div>
+          <div>
+            <button
+              className={styles.button}
+              onClick={handleCreateGame}>
           CREATE NEW GAME
-          </button>
-        </div>
-        <h2>
+              <div className={styles.button__horizontal}></div>
+              <div className={styles.button__vertical}></div>
+            </button>
+          </div>
+          <h2>
           OR
-        </h2>
-        <div className={styles.joinGame}>
-          <input
-            name="gameId"
-            value={gameId}
-            onChange={handleChange}
-            placeholder="GAME ID">
-          </input>
-          <button
-            onClick={handleJoinGame}
-          >Join Game</button>
-        </div>  
+          </h2>
+          <div className={styles.joinGame}>
+            <input
+              name="gameId"
+              value={gameId}
+              onChange={handleChange}
+              placeholder="GAME ID">
+            </input>
+            <button 
+              className={styles.button}
+              onClick={handleJoinGame}
+            >Join Game
+              <div className={styles.button__horizontal}></div>
+              <div className={styles.button__vertical}></div>
+            </button>
+          </div>  
       
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
