@@ -40,16 +40,21 @@ export const Host = () => {
       setGuess(userGuess);
       setPlayer({ name:user, id:playerId });
     });
+    socket.on('WINNER', () => {
+      
+    });
   }, [socket]);
 
   const handleClick = () => {
     const randomTrack = Math.floor(Math.random() * tracks.length);
     const newTrack = tracks[randomTrack];
     dispatch(setCurrentTrack(newTrack));
-    socket.emit('CHANGE_TRACK', newTrack, game.id);
-    socket.emit('PLAY_CHANGE', playing, game.id); 
+    socket.emit('CHANGE_TRACK', newTrack, game.id); 
   };
-
+  
+  const handlePlay = () => {
+    socket.emit('PLAY_CHANGE', playing, game.id);
+  };
 
   const handleCorrect = () => {
     socket.emit('CORRECT', { playerId:player.id,
@@ -58,16 +63,19 @@ export const Host = () => {
 
   const handleIncorrect = () => {
     socket.emit('INCORRECT');
+    socket.emit('PLAY_CHANGE', playing, game.id); 
+    setGuess('');
   };
     
   return (
     <div>
-      <h3>{currentTrack.name ? currentTrack.name : 'Press Play to start'}</h3>
-      <button onClick={handleClick}>Play</button>
+      <h3>{currentTrack.name ? currentTrack.name : 'Click new song to start'}</h3>
+      <button onClick={handleClick}>New Song</button>
+      <button onClick={handlePlay}>Play</button>
       <audio 
         id="player"
         className="player"
-        controls={true} 
+        controls={false} 
         src={currentTrack.preview_url}></audio>
       <h3>{player.name} guessed {guess}</h3>
       <button

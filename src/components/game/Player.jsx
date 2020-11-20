@@ -8,6 +8,7 @@ import {
 
 const Player = () => {
   const [userGuess, setUserGuess] = useState('');
+  const [correct, setCorrect] = useState(false);
   const { 
     socket, 
     currentTrack, 
@@ -21,19 +22,25 @@ const Player = () => {
     if(!socket) return;
     socket.on('CHANGE_TRACK', track => {
       dispatch(setCurrentTrack(track));
+      setCorrect(false);
     });
     socket.on('PAUSE', () => {
       const audioEl = document.getElementById('player');
       audioEl.pause();
       dispatch(setPlaying(false));
+      setCorrect(false);
     });
     socket.on('PLAY', () => {
       const audioEl = document.getElementById('player');
       audioEl.play();
       dispatch(setPlaying(true));
+      setCorrect(false);
     });
     socket.on('GAME_INFO', ({ game }) => {
       dispatch(setGame(game));
+    });
+    socket.on('CORRECT', () => {
+      setCorrect(true);
     });
   }, [socket]);
     
@@ -44,18 +51,18 @@ const Player = () => {
       userGuess,
       user,
       gameId:game.id,
-      playerId:socket.id});
+      playerId:socket.id });
   };
   const handleChange = ({ target }) => {
     setUserGuess(target.value);
   };
   return (
     <div>
-      Player page
+      <h3>{correct ? currentTrack.name : ''}</h3>
       <audio
         id="player" 
         className="player"
-        controls={true} 
+        controls={false} 
         src={currentTrack.preview_url}></audio>
 
       <form onSubmit={handleGuess}>
