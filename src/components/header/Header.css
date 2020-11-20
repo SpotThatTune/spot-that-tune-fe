@@ -1,6 +1,7 @@
 .header{
     display: flex;
     justify-content: center;
+    text-shadow: 3px 3px #525252;
     
     img{
         position: absolute;

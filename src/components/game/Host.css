@@ -1,6 +1,7 @@
 .button{
     width: 300px;
-    padding-top: 5px;
+	padding-top: 5px;
+	margin-bottom:50px;
     font-family: bebas-neue, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -8,7 +9,8 @@
     font-size: 1.5rem;
     background: none;
     transition: transform .15s;
-    letter-spacing: 0.15em;
+	letter-spacing: 0.15em;
+	justify-self: center;
 }
 .button {
 	
@@ -83,4 +85,15 @@
 		transform: scaleY(0);
 	}
 	
+}
+
+.allbuttons{
+	display:grid;
+	grid-template-rows: 1fr 1fr;
+	justify-content: space-evenly;
+	grid-template-columns: 1fr 1fr;
+}
+
+.instructions{
+	letter-spacing: 0.15em;
 }

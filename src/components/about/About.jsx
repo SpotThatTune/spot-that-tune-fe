@@ -36,7 +36,7 @@ const About = () => {
           <figcaption className={styles.jobtitle}>
             Software Engineer
             <p className={styles.content}>
-              The first CD that I listened to was "Get Rich Or Die Tryin". To this day it is still one of my favorite albums. I am terrible with remembering song names and hope this will help me out. 
+              I am a professional hobbyist. I enjoy coding, photography and cooking. I have a passion for learning which has taken me to the coding world and I am here to stay.The first full CD that I listened to was "Get Rich Or Die Tryin". To this day it is still one of my favorite albums. I am terrible with remembering song names and hope this will help me out. 
             </p>
             <div className={styles.profiles}>
               <a href="https://github.com/edgarpdx"target="_blank" rel="noreferrer">
@@ -55,7 +55,7 @@ const About = () => {
           <figcaption className={styles.name}>SHAWN CARPENTER</figcaption>
           <figcaption className={styles.jobtitle}>Software Engineer 
             <p className={styles.content}>
-              The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.
+            In Seventh grade I bought my first music, a tape of “Screaming for Vengeance” by Judas Priest . For the youngsters out there, tapes were a method of forcing you to buy your music again every few years. The first code I wrote was on an Apple II/e in the back of my seventh grade classroom.  I have been obsessed with both music and code ever since.
             </p>
           </figcaption>
           <div className={styles.profiles}>
