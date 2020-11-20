@@ -8,6 +8,7 @@ html{
     text-align: center;
     color: white;
     font-family: omnes-cond;
+    text-shadow: 1px 2px #000000;
 }
 
 #root{

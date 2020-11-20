@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -69,43 +70,47 @@ export const Host = () => {
     
   return (
     <div>
-      <h3>{currentTrack.name ? currentTrack.name : 'Click new song to start'}</h3>
-      <button 
-        className={styles.button}
-        onClick={handleClick}>New Song
-        <div className={styles.button__horizontal}></div>
-        <div className={styles.button__vertical}></div>
-      </button>
-      <button 
-        className={styles.button}
-        onClick={handlePlay}>
+      <h3 className={styles.instructions}>{currentTrack.name ? currentTrack.name : 'CLICK NEW SONG TO POPULATE A SONG THEN, CLICK PLAY'}</h3>
+      <div className={styles.allbuttons}>
+        <button 
+          className={styles.button}
+          onClick={handleClick}>New Song
+          <div className={styles.button__horizontal}></div>
+          <div className={styles.button__vertical}></div>
+        </button>
+        <button 
+          className={styles.button}
+          onClick={handlePlay}>
           Play
-        <div className={styles.button__horizontal}></div>
-        <div className={styles.button__vertical}></div>
-      </button>
-      <audio 
-        id="player"
-        className="player"
-        controls={false} 
-        src={currentTrack.preview_url}></audio>
+          <div className={styles.button__horizontal}></div>
+          <div className={styles.button__vertical}></div>
+        </button>
+        <audio 
+          id="player"
+          className="player"
+          controls={false} 
+          src={currentTrack.preview_url}>
+            
+        </audio>
       
-      <button
-        className={styles.button}
-        name="correct"
-        onClick={handleCorrect}
-      >Correct
-        <div className={styles.button__horizontal}></div>
-        <div className={styles.button__vertical}></div>
-      </button>
-      <button
-        className={styles.button}
-        name="inCorrect"
-        onClick={handleIncorrect}
-      >Incorrect
-        <div className={styles.button__horizontal}></div>
-        <div className={styles.button__vertical}></div>
-      </button>
-      <h3>{guess ? `${player.name} guesses ${guess}` : '' }</h3>
+        <button
+          className={styles.button}
+          name="correct"
+          onClick={handleCorrect}
+        >Correct
+          <div className={styles.button__horizontal}></div>
+          <div className={styles.button__vertical}></div>
+        </button>
+        <button
+          className={styles.button}
+          name="inCorrect"
+          onClick={handleIncorrect}
+        >Incorrect
+          <div className={styles.button__horizontal}></div>
+          <div className={styles.button__vertical}></div>
+        </button>
+      </div>
+      <h3 className={styles.instructions}>{guess ? `${player.name} guesses ${guess}` : '' }</h3>
     </div>
   );
 };

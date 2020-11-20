@@ -1,3 +1,5 @@
+@import url("https://use.typekit.net/ndn1fhm.css");
+
 ul{
     list-style-type: none;
 
@@ -7,14 +9,14 @@ li{
     margin: 10px;
     font-size: 1.3rem;
     font-family: omnes-pro, sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
 }
 
 .instructionTitle{
     font-family: bebas-neue, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     color: whitesmoke;
 }
@@ -39,4 +41,12 @@ li{
 
 .links:hover{
     transform: scale(1.5);
+}
+
+
+.content{
+    font-weight: 700;
+    text-shadow: 3px 3px #000000;
+    text-align: center;
+    
 }
