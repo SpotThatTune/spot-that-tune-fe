@@ -41,9 +41,6 @@ export const Host = () => {
       setGuess(userGuess);
       setPlayer({ name:user, id:playerId });
     });
-    socket.on('WINNER', () => {
-      
-    });
   }, [socket]);
 
   const handleClick = () => {

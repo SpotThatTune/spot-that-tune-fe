@@ -19,7 +19,8 @@ export const getPlaylistTracks = (token, playlistId) => {
   })
     .then(res => res.json())
     .then(json => json.items)
-    .then(tracks => tracks.map(track => ({ ...track.track })));
+    .then(tracks => tracks.map(track => ({ ...track.track })))
+    .then(list => list.filter(track => track.preview_url));
 };
 
 export const getUserName = (token) => {
