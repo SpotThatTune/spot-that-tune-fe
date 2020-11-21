@@ -1,4 +1,8 @@
-import { getPlaylistTracks, getUserName, getUserPlaylists } from '../services/spotifyAPI';
+import {
+  getPlaylistTracks,
+  getUserName,
+  getUserPlaylists
+} from '../services/spotifyAPI';
 
 export const SET_TOKEN = 'SET_TOKEN';
 export const setToken = token => ({
