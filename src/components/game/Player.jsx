@@ -4,8 +4,6 @@ import styles from './Player.css';
 
 import {
   setCurrentTrack,
-  setGame,
-  setPlaying
 } from '../../actions/SpotifyActions';
 
 const Player = () => {
@@ -27,21 +25,7 @@ const Player = () => {
       dispatch(setCurrentTrack(track));
       setCorrect(false);
     });
-    socket.on('PAUSE', () => {
-      const audioEl = document.getElementById('player');
-      audioEl.pause();
-      dispatch(setPlaying(false));
-      setCorrect(false);
-    });
-    socket.on('PLAY', () => {
-      const audioEl = document.getElementById('player');
-      audioEl.play();
-      dispatch(setPlaying(true));
-      setCorrect(false);
-    });
-    socket.on('GAME_INFO', ({ game }) => {
-      dispatch(setGame(game));
-    });
+
     socket.on('CORRECT', () => {
       setCorrect(true);
     });
@@ -49,7 +33,6 @@ const Player = () => {
     
   const handleGuess = event => {
     event.preventDefault();
-    console.log(`${user} guessed ${userGuess}`);
     socket.emit('GUESS', { 
       userGuess,
       user,
@@ -62,11 +45,6 @@ const Player = () => {
   return (
     <div className={styles.guess}>
       <h3>{correct ? currentTrack.name : ''}</h3>
-      <audio
-        id="player" 
-        className="player"
-        controls={false} 
-        src={currentTrack.preview_url}></audio>
       <div>
         <form  onSubmit={handleGuess}>
           <input
