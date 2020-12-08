@@ -33,7 +33,6 @@ const Player = () => {
     
   const handleGuess = event => {
     event.preventDefault();
-    console.log(`${user} guessed ${userGuess}`);
     socket.emit('GUESS', { 
       userGuess,
       user,
