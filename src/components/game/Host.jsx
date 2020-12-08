@@ -59,8 +59,9 @@ const Host = () => {
         </button>
         <button 
           className={styles.button}
-          onClick={handlePlay}>
-          Play
+          onClick={handlePlay}
+          disabled={!currentTrack}>
+          {playing ? 'Pause' : 'Play'}
           <div className={styles.button__horizontal}></div>
           <div className={styles.button__vertical}></div>
         </button>
@@ -68,6 +69,7 @@ const Host = () => {
         <button
           className={styles.button}
           name="correct"
+          disabled = {!guess}
           onClick={handleCorrect}
         >Correct
           <div className={styles.button__horizontal}></div>
@@ -76,6 +78,7 @@ const Host = () => {
         <button
           className={styles.button}
           name="inCorrect"
+          disabled = {!guess}
           onClick={handleIncorrect}
         >Incorrect
           <div className={styles.button__horizontal}></div>
